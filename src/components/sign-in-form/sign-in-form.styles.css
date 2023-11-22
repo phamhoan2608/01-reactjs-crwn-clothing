@@ -1,0 +1,4 @@
+.sign-in-btns {
+  display: flex;
+  column-gap: 20px;
+}
