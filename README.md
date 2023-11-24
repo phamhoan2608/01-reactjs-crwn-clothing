@@ -39,6 +39,8 @@ export const UserProvider = ({ children }) => {
 
 ### firebase.utils.js
 
+Thêm vào file firebase.utils.js
+
 ```javascript
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
 ```
