@@ -35,12 +35,10 @@ const SignInForm = () => {
     event.preventDefault();
     try {
       const response = await signInWithEmailPassword(email, password);
-      const { user } = response;
-      setCurrentUser(user);
+      resetFormFields();
       if (response) {
         navigate("/");
       }
-      resetFormFields();
     } catch (error) {
       if (error.code === "auth/invalid-login-credentials") {
         alert("Password is not correct!!!");
@@ -56,8 +54,8 @@ const SignInForm = () => {
   const signInWithGoogle = async () => {
     try {
       const { user } = await signInWithGooglePopup();
-      const userDocRef = await createUserDocumentFromAuth(user);
-      if (userDocRef) {
+      // const userDocRef = await createUserDocumentFromAuth(user);
+      if (user) {
         navigate("/");
       }
     } catch (error) {
