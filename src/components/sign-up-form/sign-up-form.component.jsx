@@ -4,7 +4,7 @@ import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "
 import FormInput from "../form-input/form-input.component";
 import "./sign-up-form.styles.css";
 import Button from "../button/button.component";
-import { UserContext } from "../../contexts/user.contenxt";
+import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
   displayName: "",

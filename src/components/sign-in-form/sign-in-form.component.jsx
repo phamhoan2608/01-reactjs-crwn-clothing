@@ -9,7 +9,7 @@ import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 import "./sign-in-form.styles.css";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../contexts/user.contenxt";
+import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
   email: "",
