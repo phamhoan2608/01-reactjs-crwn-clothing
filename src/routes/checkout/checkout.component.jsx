@@ -21,6 +21,7 @@ const Checkout = () => {
       setModal(false);
       setConfirm(DEFALUT_CONFIRM);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [confirm]);
 
   const countSum = useMemo(() => {
@@ -98,12 +99,6 @@ const Checkout = () => {
       ) : (
         <h1>Your cart is empty</h1>
       )}
-      {/* <div className="table-footer">
-        <h2>Tổng tiền</h2>
-
-        <h2>2000000</h2>
-      </div> */}
-
       <ModalConfirm
         isOpen={modal}
         onClose={() => setModal(false)}
