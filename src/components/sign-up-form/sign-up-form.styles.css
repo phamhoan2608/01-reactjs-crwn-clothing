@@ -10,9 +10,3 @@ form.sign-up-form {
   justify-content: center;
   gap: 30px;
 }
-
-button {
-  width: 200px;
-  height: 70px;
-  cursor: pointer;
-}

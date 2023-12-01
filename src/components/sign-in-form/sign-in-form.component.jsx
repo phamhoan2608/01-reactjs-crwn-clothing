@@ -1,15 +1,10 @@
-import { useState, useContext } from "react";
-import {
-  createUserDocumentFromAuth,
-  signInWithEmailPassword,
-  signInWithGooglePopup,
-} from "../../utils/firebase/firebase.utils";
+import { useState } from "react";
+import { signInWithEmailPassword, signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
 
 import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 import "./sign-in-form.styles.css";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
   email: "",
@@ -20,7 +15,6 @@ const SignInForm = () => {
   const navigate = useNavigate();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -54,7 +48,6 @@ const SignInForm = () => {
   const signInWithGoogle = async () => {
     try {
       const { user } = await signInWithGooglePopup();
-      // const userDocRef = await createUserDocumentFromAuth(user);
       if (user) {
         navigate("/");
       }
@@ -75,7 +68,9 @@ const SignInForm = () => {
         <FormInput label="Password" type="password" required onChange={handleChange} name="password" value={password} />
 
         <div className="sign-in-btns">
-          <Button type="submit">SIGN IN</Button>
+          <Button type="submit" buttonType="inverted">
+            SIGN IN
+          </Button>
           <Button type="button" buttonType="google" onClick={signInWithGoogle}>
             SIGN IN WITH GOOGLE
           </Button>

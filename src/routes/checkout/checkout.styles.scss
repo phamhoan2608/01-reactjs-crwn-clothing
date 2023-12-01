@@ -1,0 +1,36 @@
+$checkout-w-column: 100%/6;
+
+.checkout-table {
+  width: 100%;
+  font-weight: bold;
+  font-size: 16px;
+
+  & tr td {
+    width: $checkout-w-column;
+    text-align: center;
+
+    & img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    & button {
+      padding: 5px;
+      margin: 0 10px;
+    }
+  }
+
+  & tr th {
+    width: $checkout-w-column;
+  }
+  & .table-footer {
+    // display: flex;
+    width: 100%;
+    // flex-direction: row;
+    background-color: aquamarine;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+  }
+}
