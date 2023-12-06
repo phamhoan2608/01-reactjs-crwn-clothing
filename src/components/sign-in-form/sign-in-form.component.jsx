@@ -2,8 +2,9 @@ import { useState } from "react";
 import { signInWithEmailPassword, signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
 import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
-import "./sign-in-form.styles.css";
+import "./sign-in-form.styles.jsx";
 import { useNavigate } from "react-router-dom";
+import { SignInBtns } from "./sign-in-form.styles.jsx";
 
 const defaultFormFields = {
   email: "",
@@ -66,14 +67,14 @@ const SignInForm = () => {
 
         <FormInput label="Password" type="password" required onChange={handleChange} name="password" value={password} />
 
-        <div className="sign-in-btns">
+        <SignInBtns>
           <Button type="submit" buttonType="inverted">
             SIGN IN
           </Button>
           <Button type="button" buttonType="google" onClick={signInWithGoogle}>
             SIGN IN WITH GOOGLE
           </Button>
-        </div>
+        </SignInBtns>
       </form>
     </div>
   );

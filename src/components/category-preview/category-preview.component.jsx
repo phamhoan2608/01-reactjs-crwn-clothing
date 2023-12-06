@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import "../category-preview/category-preview.styles.scss";
 import ProductCard from "../product-card/product-card.component";
+import { ProductContainer } from "../../routes/category-page/category-page.styles";
 
 export default function CategoryPreview({ title, products }) {
   const navigate = useNavigate();
@@ -16,13 +16,13 @@ export default function CategoryPreview({ title, products }) {
           {title}
         </span>
       </h2>
-      <div className="products-container">
+      <ProductContainer>
         {products
           .filter((_, idx) => idx < 4)
           .map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
-      </div>
+      </ProductContainer>
     </div>
   );
 }

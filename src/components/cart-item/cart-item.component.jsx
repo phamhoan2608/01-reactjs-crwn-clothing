@@ -1,8 +1,8 @@
-import "./cart-item.styles.scss";
+import { CartItemContainer } from "./cart-item.styles";
 
 const CartItem = ({ product }) => {
   return (
-    <div className="cart-item">
+    <CartItemContainer>
       <img src={`${product.imageUrl}`} alt={`${product.name}`} />
       <div className="cart-item-header">
         <span className="item-name">{product.name}</span>
@@ -10,7 +10,7 @@ const CartItem = ({ product }) => {
           <span>{product.quantity}</span> x <span>${product.price}</span> = ${product.quantity * product.price}
         </div>
       </div>
-    </div>
+    </CartItemContainer>
   );
 };
 

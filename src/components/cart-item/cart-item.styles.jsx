@@ -1,4 +1,6 @@
-.cart-item {
+import styled from "styled-components";
+
+export const CartItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   column-gap: 20px;
@@ -9,4 +11,4 @@
     height: 60px;
     object-fit: cover;
   }
-}
+`;

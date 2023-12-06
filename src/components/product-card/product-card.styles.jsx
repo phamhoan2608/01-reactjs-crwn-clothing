@@ -1,4 +1,6 @@
-.product-card-container {
+import styled from "styled-components";
+
+export const ProductCardContainer = styled.div`
   position: relative;
   width: 100%;
 
@@ -23,10 +25,10 @@
     bottom: 15%;
     left: 25%;
   }
-}
+`;
 
-.footer {
+export const ProductCardFooter = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
+`;

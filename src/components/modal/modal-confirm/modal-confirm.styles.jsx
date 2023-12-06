@@ -1,29 +1,26 @@
-// .modal,
-.overlay {
+import styled from "styled-components";
+
+export const Overlay = styled.div`
   position: fixed;
+  background-color: rgb(49, 49, 49, 0.8);
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-}
+`;
 
-.overlay {
-  background-color: rgb(49, 49, 49, 0.8);
-}
-
-.modal-confirm {
+export const ModalConfirmContainer = styled.div`
   position: absolute;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
-  // opacity: 0.5;
   z-index: 9998;
-}
+`;
 
-.modal-content {
+export const ModalContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,9 +35,9 @@
   left: calc(50% - 250px);
   // transform: translate(-50%, -50%);
   z-index: 9999;
+`;
 
-  & .modal-btns {
-    display: flex;
-    gap: 20px;
-  }
-}
+export const ModalBtns = styled.div`
+  display: flex;
+  gap: 20px;
+`;

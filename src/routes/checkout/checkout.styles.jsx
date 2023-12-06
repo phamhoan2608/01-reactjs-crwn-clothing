@@ -1,12 +1,12 @@
-$checkout-w-column: 100%/6;
+import styled from "styled-components";
 
-.checkout-table {
+export const CheckoutTable = styled.div`
   width: 100%;
   font-weight: bold;
   font-size: 16px;
 
   & tr td {
-    width: $checkout-w-column;
+    width: calc(100% / 6);
     text-align: center;
 
     & img {
@@ -22,7 +22,7 @@ $checkout-w-column: 100%/6;
   }
 
   & tr th {
-    width: $checkout-w-column;
+    width: calc(100% / 6);
   }
 
   & .table-footer {
@@ -32,4 +32,4 @@ $checkout-w-column: 100%/6;
     bottom: 0;
     left: 0;
   }
-}
+`;

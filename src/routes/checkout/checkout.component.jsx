@@ -1,9 +1,9 @@
 import { useContext, useEffect, useMemo, useState } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import ModalConfirm from "../../components/modal/modal-confirm/modal-confirm.component";
-import "./checkout.styles.scss";
 
 import Button from "../../components/button/button.component";
+import { CheckoutTable } from "./checkout.styles";
 
 const DEFALUT_CONFIRM = {
   status: false,
@@ -31,7 +31,7 @@ const Checkout = () => {
   return (
     <>
       {cartItems.length > 0 ? (
-        <table className="checkout-table">
+        <CheckoutTable as="table">
           <thead className="checkout-header">
             <tr>
               <th>STT</th>
@@ -95,7 +95,7 @@ const Checkout = () => {
               </tr>
             )}
           </tbody>
-        </table>
+        </CheckoutTable>
       ) : (
         <h1>Your cart is empty</h1>
       )}

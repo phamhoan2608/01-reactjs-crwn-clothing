@@ -1,4 +1,6 @@
-button {
+import styled from "styled-components";
+
+export const ButtonStyle = styled.button`
   color: white;
   background-color: #1f1f1f;
   border: 1px solid #fff;
@@ -36,4 +38,4 @@ button {
     height: 40px;
     border-radius: 2px solid #000;
   }
-}
+`;

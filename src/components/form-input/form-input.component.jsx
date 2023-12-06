@@ -1,13 +1,11 @@
-import { Fragment } from "react";
-
-import "./form-input.styles.css";
+import { FormInputContainer, FormLabel } from "./form-input.styles";
 
 const FormInput = ({ label, ...otherProps }) => {
   return (
-    <div className="form-input">
-      <label>{label}</label>
-      <input {...otherProps} />
-    </div>
+    <FormInputContainer>
+      <FormLabel>{label}</FormLabel>
+      <FormInput {...otherProps} />
+    </FormInputContainer>
   );
 };
 
