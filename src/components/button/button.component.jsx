@@ -1,5 +1,3 @@
-import { ButtonStyle } from "./button.styles";
-
 const BUTTON_TYPE_CLASSES = {
   google: "google-sign-in",
   inverted: "inverted",
@@ -7,9 +5,9 @@ const BUTTON_TYPE_CLASSES = {
 
 const Button = ({ children, buttonType, ...otherProps }) => {
   return (
-    <ButtonStyle className={`${BUTTON_TYPE_CLASSES[buttonType]}`} {...otherProps}>
+    <button className={`${BUTTON_TYPE_CLASSES[buttonType]}`} {...otherProps}>
       {children}
-    </ButtonStyle>
+    </button>
   );
 };
 

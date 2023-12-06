@@ -5,6 +5,7 @@ export const ButtonStyle = styled.button`
   background-color: #1f1f1f;
   border: 1px solid #fff;
   border-radius: 10px;
+  width: 200px;
 
   &.inverted {
     width: 200px;
@@ -37,5 +38,6 @@ export const ButtonStyle = styled.button`
     width: 40px;
     height: 40px;
     border-radius: 2px solid #000;
+    cursor: pointer;
   }
 `;
