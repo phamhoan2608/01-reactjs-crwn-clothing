@@ -1,3 +1,4 @@
+import { ButtonStyle } from "../../button/button.styles";
 import { ModalBtns, ModalConfirmContainer, ModalContent, Overlay } from "./modal-confirm.styles";
 
 const ModalConfirm = ({ isOpen, onClose, onConfirm }) => {
@@ -8,12 +9,12 @@ const ModalConfirm = ({ isOpen, onClose, onConfirm }) => {
         <ModalContent>
           <h2>Bạn có chắc chắn muốn xóa sản phẩm?</h2>
           <ModalBtns>
-            <button className="inverted" onClick={onConfirm}>
+            <ButtonStyle className="inverted" onClick={onConfirm}>
               OK
-            </button>
-            <button className="inverted" onClick={onClose}>
+            </ButtonStyle>
+            <ButtonStyle className="inverted" onClick={onClose}>
               Cancel
-            </button>
+            </ButtonStyle>
           </ModalBtns>
         </ModalContent>
       </ModalConfirmContainer>

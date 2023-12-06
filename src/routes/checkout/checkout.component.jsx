@@ -2,8 +2,8 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import ModalConfirm from "../../components/modal/modal-confirm/modal-confirm.component";
 
-import Button from "../../components/button/button.component";
 import { CheckoutTable } from "./checkout.styles";
+import { ButtonStyle } from "../../components/button/button.styles";
 
 const DEFALUT_CONFIRM = {
   status: false,
@@ -57,7 +57,7 @@ const Checkout = () => {
                     <h2>{name}</h2>
                   </td>
                   <td>
-                    <Button
+                    <ButtonStyle
                       className="circle"
                       onClick={() => {
                         if (quantity === 1) {
@@ -69,16 +69,18 @@ const Checkout = () => {
                       }}
                     >
                       &lt;
-                    </Button>
+                    </ButtonStyle>
                     <span>{quantity}</span>
-                    <Button className="circle" onClick={() => addItemToCart(cartItem)}>
+                    <ButtonStyle className="circle" onClick={() => addItemToCart(cartItem)}>
                       &gt;
-                    </Button>
+                    </ButtonStyle>
                   </td>
                   <td>${price}</td>
                   <td>${quantity * price}</td>
                   <td>
-                    <button onClick={() => deleteItemToCart(cartItem)}>X</button>
+                    <ButtonStyle className="circle" onClick={() => deleteItemToCart(cartItem)}>
+                      X
+                    </ButtonStyle>
                   </td>
                 </tr>
               );
