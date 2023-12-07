@@ -4,6 +4,7 @@ export const CheckoutTable = styled.div`
   width: 100%;
   font-weight: bold;
   font-size: 16px;
+  border-collapse: collapse;
 
   & tr td {
     width: calc(100% / 6);
@@ -13,6 +14,11 @@ export const CheckoutTable = styled.div`
       width: 200px;
       height: 200px;
       object-fit: cover;
+
+      @media screen and (max-width: 768px) {
+        width: 50px;
+        height: 50px;
+      }
     }
 
     & button {

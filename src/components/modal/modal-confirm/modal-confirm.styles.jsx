@@ -18,6 +18,10 @@ export const ModalConfirmContainer = styled.div`
   top: 0;
   left: 0;
   z-index: 9998;
+
+  & h2 {
+    padding: 0 20px;
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -35,6 +39,13 @@ export const ModalContent = styled.div`
   left: calc(50% - 250px);
   // transform: translate(-50%, -50%);
   z-index: 9999;
+
+  @media screen and (max-width: 768px) {
+    width: 300px;
+    height: 200px;
+    top: 35%;
+    left: calc(50% - 150px);
+  }
 `;
 
 export const ModalBtns = styled.div`
