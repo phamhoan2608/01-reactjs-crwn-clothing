@@ -1,10 +1,10 @@
-import { FormInputContainer, FormLabel } from "./form-input.styles";
+import { FormInputContainer, FormInputStyle, FormLabel } from "./form-input.styles";
 
 const FormInput = ({ label, ...otherProps }) => {
   return (
     <FormInputContainer>
       <FormLabel>{label}</FormLabel>
-      <FormInput {...otherProps} />
+      <FormInputStyle {...otherProps} />
     </FormInputContainer>
   );
 };
