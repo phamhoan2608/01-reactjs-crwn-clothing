@@ -9,10 +9,10 @@ const ModalConfirm = ({ isOpen, onClose, onConfirm }) => {
         <ModalContent>
           <h2>Bạn có chắc chắn muốn xóa sản phẩm?</h2>
           <ModalBtns>
-            <ButtonStyle className="inverted" onClick={onConfirm}>
+            <ButtonStyle className="inverted modal-button" onClick={onConfirm}>
               OK
             </ButtonStyle>
-            <ButtonStyle className="inverted" onClick={onClose}>
+            <ButtonStyle className="inverted modal-button" onClick={onClose}>
               Cancel
             </ButtonStyle>
           </ModalBtns>

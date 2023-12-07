@@ -15,26 +15,24 @@ const Navigation = () => {
 
   return (
     <>
-      <div className="modal">
-        <NavigationContainer>
-          <LogoContainer to={"/"}>
-            <CrwnLogo className="logo" />
-          </LogoContainer>
-          <NavLinksContainer>
-            <NavLink to={"/shop"}>SHOP</NavLink>
-            {currentUser ? (
-              <NavLink to={"/signIn"} onClick={signOutUser}>
-                SIGN OUT
-              </NavLink>
-            ) : (
-              <NavLink to={"/signIn"}>SIGN IN</NavLink>
-            )}
-            <CartIcon />
-          </NavLinksContainer>
-          {isCartOpen && <CartDropdown />}
-        </NavigationContainer>
-        <Outlet />
-      </div>
+      <NavigationContainer>
+        <LogoContainer to={"/"}>
+          <CrwnLogo className="logo" />
+        </LogoContainer>
+        <NavLinksContainer>
+          <NavLink to={"/shop"}>SHOP</NavLink>
+          {currentUser ? (
+            <NavLink to={"/signIn"} onClick={signOutUser}>
+              SIGN OUT
+            </NavLink>
+          ) : (
+            <NavLink to={"/signIn"}>SIGN IN</NavLink>
+          )}
+          <CartIcon />
+        </NavLinksContainer>
+        {isCartOpen && <CartDropdown />}
+      </NavigationContainer>
+      <Outlet />
     </>
   );
 };

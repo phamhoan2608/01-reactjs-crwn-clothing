@@ -30,6 +30,7 @@ const Checkout = () => {
 
   return (
     <>
+      <h1>Shopping Cart</h1>
       {cartItems.length > 0 ? (
         <CheckoutTable as="table">
           <thead className="checkout-header">
@@ -68,11 +69,11 @@ const Checkout = () => {
                         }
                       }}
                     >
-                      &lt;
+                      -
                     </ButtonStyle>
                     <span>{quantity}</span>
                     <ButtonStyle className="circle" onClick={() => addItemToCart(cartItem)}>
-                      &gt;
+                      +
                     </ButtonStyle>
                   </td>
                   <td>${price}</td>
@@ -88,7 +89,7 @@ const Checkout = () => {
             {cartItems.length > 0 && (
               <tr className="table-footer">
                 <td colSpan={5}>
-                  <h2>Tổng tiền</h2>
+                  <h2>Subtotal</h2>
                 </td>
                 <td>
                   <h2>${countSum}</h2>
@@ -99,7 +100,7 @@ const Checkout = () => {
           </tbody>
         </CheckoutTable>
       ) : (
-        <h1>Your cart is empty</h1>
+        <h3>Your cart is empty</h3>
       )}
       <ModalConfirm
         isOpen={modal}

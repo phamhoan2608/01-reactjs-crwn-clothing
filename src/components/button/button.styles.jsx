@@ -13,7 +13,6 @@ export const ButtonStyle = styled.button`
     color: white;
     background-color: #1f1f1f;
     border: 1px solid #fff;
-    border-radius: 10px;
     &:hover {
       color: #1f1f1f;
       background-color: white;

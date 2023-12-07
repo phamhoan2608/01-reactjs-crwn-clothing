@@ -5,4 +5,9 @@ export const ProductContainer = styled.div`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 10px;
   row-gap: 50px;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
