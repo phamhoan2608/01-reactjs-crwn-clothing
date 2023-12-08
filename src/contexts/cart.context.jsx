@@ -47,20 +47,72 @@ export const CartContext = createContext({
   deleteItemToCart: () => {},
 });
 
+const INITIAL_STATE = {
+  isCartOpen: false,
+  cartItems: [],
+  cartCount: 0,
+  cartTotal: 0,
+};
+
+const cartReducer = (state, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case "SET_CART_ITEMS":
+      return {
+        ...state,
+        ...payload,
+      };
+
+    default:
+      throw new Error(`Unhandled type ${type} in useReducer`);
+  }
+};
+
+// const AddToCartAction = (itemToAdd) => {
+//   dispatch({ type: "ADD_TO_CART", payload: itemToAdd });
+// };
+
 export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
 
   const addItemToCart = (productToAdd) => {
-    setCartItems(addCartItem(cartItems, productToAdd));
+    const newCartItems = addCartItem(cartItems, productToAdd);
+
+    updateCartItemsReducer(newCartItems);
   };
 
   const removeItemToCart = (productToRemove) => {
-    setCartItems(removeCartItem(cartItems, productToRemove));
+    const newCartItems = removeCartItem(cartItems, productToRemove);
+
+    updateCartItemsReducer(newCartItems);
   };
 
   const deleteItemToCart = (productToDelete) => {
-    setCartItems(deleteItem(cartItems, productToDelete));
+    const newCartItems = deleteItem(cartItems, productToDelete);
+
+    updateCartItemsReducer(newCartItems);
+  };
+
+  const updateCartItemsReducer = (newCartItems) => {
+    const newCartCount = newCartItems.reduce((total, cartItem) => total + cartItem.quantity, 0);
+
+    const newCartTotal = newCartItems.reduce((total, cartItem) => total + cartItem.quantity * cartItem.price, 0);
+
+    /**
+     * generate newCartTotal
+     *
+     * generate newCartCount
+     *
+     *
+     * dispatch new action with payload == {
+     * newCartItem
+     * newCartTotal,
+     * newCartCount
+     * }
+     *
+     */
   };
 
   const value = { isCartOpen, setIsCartOpen, cartItems, addItemToCart, removeItemToCart, deleteItemToCart };
