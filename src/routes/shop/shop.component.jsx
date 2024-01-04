@@ -1,17 +1,29 @@
-import { useContext } from "react";
-import { CategoriesContext } from "../../contexts/categories.context";
-import CategoryPreview from "../../components/category-preview/category-preview.component";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setCategoriesMap } from '../../store/categories/categories.action';
+import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
+import { Route, Routes } from 'react-router-dom';
+import CategoriesPreview from '../category-preview/categories-preview.component';
+import CategoryPage from '../category-page/category-page.component';
 
 const Shop = () => {
-  const { categoriesMap } = useContext(CategoriesContext);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getCategoryMap = async () => {
+      const categoryMap = await getCategoriesAndDocuments();
+      dispatch(setCategoriesMap(categoryMap));
+    };
+
+    getCategoryMap();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div className="shop-container">
-      {Object.keys(categoriesMap).map((title) => {
-        const products = categoriesMap[title];
-        return <CategoryPreview key={title} title={title} products={products} />;
-      })}
-    </div>
+    <Routes>
+      <Route index element={<CategoriesPreview />} />
+      <Route path=":categoryId" element={<CategoryPage />} />
+    </Routes>
   );
 };
 
