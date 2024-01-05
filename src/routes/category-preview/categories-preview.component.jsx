@@ -1,14 +1,14 @@
-import { useSelector } from 'react-redux';
-import CategoryPreview from '../../components/category-preview/category-preview.component';
+import { useSelector } from "react-redux";
+import CategoryPreview from "../../components/category-preview/category-preview.component";
+import { selectCategories } from "../../store/categories/category.selector";
 
 const CategoriesPreview = () => {
-  const categoriesMap = useSelector((state) => state.categories.categoriesMap);
+  const categoriesMap = useSelector(selectCategories);
 
   return (
     <div className="category-preview-container">
-      {Object.keys(categoriesMap).map((title) => {
-        const products = categoriesMap[title];
-        return <CategoryPreview key={title} title={title} products={products} />;
+      {categoriesMap.map(({ items, title }) => {
+        return <CategoryPreview key={title} title={title.toLowerCase()} products={items} />;
       })}
     </div>
   );
