@@ -12,7 +12,7 @@ const CartIcon = () => {
   const handleShowCart = () => dispatch(createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, !isCartOpen));
 
   const count = useMemo(() => {
-    return cartItems.reduce((preValue, curValue) => preValue + curValue.quantity, 0);
+    return cartItems?.reduce((preValue, curValue) => preValue + curValue.quantity, 0);
   }, [cartItems]);
 
   return (
