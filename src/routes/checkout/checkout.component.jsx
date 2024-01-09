@@ -1,9 +1,11 @@
-import { useContext, useEffect, useMemo, useState } from "react";
-import { CartContext } from "../../contexts/cart.context";
+import { useEffect, useMemo, useState } from "react";
 import ModalConfirm from "../../components/modal/modal-confirm/modal-confirm.component";
 
 import { CheckoutTable } from "./checkout.styles";
 import { ButtonStyle } from "../../components/button/button.styles";
+import { useDispatch, useSelector } from "react-redux";
+import { createAction } from "../../utils/reducer/reducer.utils";
+import { CART_ACTION_TYPES } from "../../store/cart/cart.types";
 
 const DEFALUT_CONFIRM = {
   status: false,
@@ -11,13 +13,20 @@ const DEFALUT_CONFIRM = {
 };
 
 const Checkout = () => {
+  const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
   const [confirm, setConfirm] = useState(DEFALUT_CONFIRM);
-  const { cartItems, addItemToCart, removeItemToCart, deleteItemToCart } = useContext(CartContext);
+  const cart = useSelector((state) => state.cart);
+
+  console.log("cart log", cart.cartItems);
+
+  useEffect(() => {
+    dispatch(createAction(CART_ACTION_TYPES.SET_CART_ITEMS, cart.cartItems));
+  }, [cart.cartItems, dispatch]);
 
   useEffect(() => {
     if (confirm.status) {
-      removeItemToCart(confirm?.item);
+      handleRemoveItem(confirm?.item);
       setModal(false);
       setConfirm(DEFALUT_CONFIRM);
     }
@@ -25,13 +34,25 @@ const Checkout = () => {
   }, [confirm]);
 
   const countSum = useMemo(() => {
-    return cartItems.reduce((preValue, curValue) => preValue + curValue.price * curValue.quantity, 0);
-  }, [cartItems]);
+    return cart.cartItems.reduce((preValue, curValue) => preValue + curValue.price * curValue.quantity, 0);
+  }, [cart.cartItems]);
+
+  const handleRemoveItem = (product) => {
+    dispatch(createAction(CART_ACTION_TYPES.REMOVE_TO_CART, product));
+  };
+
+  const handleAddItem = (product) => {
+    dispatch(createAction(CART_ACTION_TYPES.ADD_TO_CART, product));
+  };
+
+  const deleteItem = (product) => {
+    dispatch(createAction(CART_ACTION_TYPES.DELETE_TO_CART, product));
+  };
 
   return (
     <>
       <h1>Shopping Cart</h1>
-      {cartItems.length > 0 ? (
+      {cart.cartItems.length > 0 ? (
         <CheckoutTable as="table">
           <thead className="checkout-header">
             <tr>
@@ -45,7 +66,7 @@ const Checkout = () => {
             </tr>
           </thead>
           <tbody>
-            {cartItems.map((cartItem, index) => {
+            {cart.cartItems.map((cartItem, index) => {
               const { id, name, imageUrl, price, quantity } = cartItem;
 
               return (
@@ -65,28 +86,28 @@ const Checkout = () => {
                           setModal(true);
                           setConfirm({ ...confirm, item: cartItem });
                         } else {
-                          removeItemToCart(cartItem);
+                          handleRemoveItem(cartItem);
                         }
                       }}
                     >
                       -
                     </ButtonStyle>
                     <span>{quantity}</span>
-                    <ButtonStyle className="circle" onClick={() => addItemToCart(cartItem)}>
+                    <ButtonStyle className="circle" onClick={() => handleAddItem(cartItem)}>
                       +
                     </ButtonStyle>
                   </td>
                   <td>${price}</td>
                   <td>${quantity * price}</td>
                   <td>
-                    <ButtonStyle className="circle" onClick={() => deleteItemToCart(cartItem)}>
+                    <ButtonStyle className="circle" onClick={() => deleteItem(cartItem)}>
                       X
                     </ButtonStyle>
                   </td>
                 </tr>
               );
             })}
-            {cartItems.length > 0 && (
+            {cart.cartItems.length > 0 && (
               <tr className="table-footer">
                 <td colSpan={5}>
                   <h2>Subtotal</h2>

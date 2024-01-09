@@ -1,4 +1,4 @@
-### Obverser Pattern
+# I. Obverser Pattern
 
 ## 1. Định nghĩa
 
@@ -23,7 +23,6 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubcribe = onAuthStateChangedListener((user) => {
-      console.log(user);
       if (user) {
         createUserDocumentFromAuth(user);
       }
@@ -43,4 +42,25 @@ Thêm vào file firebase.utils.js
 
 ```javascript
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
+```
+
+# II. Redux
+
+## 1. Định nghĩa
+
+## 2. Code
+
+### 2.1. Curry function
+
+Currying là một kỹ thuật trong lập trình hàm, nơi một hàm với nhiều đối số được chuyển đổi thành một chuỗi các hàm, mỗi hàm trong chuỗi đó chỉ chấp nhận một đối số duy nhất
+
+```javascript
+function add(x) {
+  return function (y) {
+    return x + y;
+  };
+}
+
+const addFive = add(5);
+console.log(addFive(3)); // Output: 8
 ```

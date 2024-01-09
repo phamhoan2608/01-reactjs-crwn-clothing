@@ -1,14 +1,13 @@
-import { useState } from "react";
-import { signInWithEmailPassword, signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
-import Button from "../button/button.component";
-import FormInput from "../form-input/form-input.component";
-// import "./sign-in-form.styles.jsx";
-import { useNavigate } from "react-router-dom";
-import { SignInBtns } from "./sign-in-form.styles.jsx";
+import { useState } from 'react';
+import { signInWithEmailPassword, signInWithGooglePopup } from '../../utils/firebase/firebase.utils';
+import Button from '../button/button.component';
+import FormInput from '../form-input/form-input.component';
+import { useNavigate } from 'react-router-dom';
+import { SignInBtns } from './sign-in-form.styles.jsx';
 
 const defaultFormFields = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 const SignInForm = () => {
@@ -31,13 +30,13 @@ const SignInForm = () => {
       const response = await signInWithEmailPassword(email, password);
       resetFormFields();
       if (response) {
-        navigate("/");
+        navigate('/');
       }
     } catch (error) {
-      if (error.code === "auth/invalid-login-credentials") {
-        alert("Password is not correct!!!");
+      if (error.code === 'auth/invalid-login-credentials') {
+        alert('Password is not correct!!!');
       }
-      console.log("Have error with sign in", error);
+      console.log('Have error with sign in', error);
     }
   };
 
@@ -49,11 +48,11 @@ const SignInForm = () => {
     try {
       const { user } = await signInWithGooglePopup();
       if (user) {
-        navigate("/");
+        navigate('/');
       }
     } catch (error) {
-      if (error.code === "auth/popup-closed-by-user") {
-        alert("No user is choosen");
+      if (error.code === 'auth/popup-closed-by-user') {
+        alert('No user is choosen');
       }
     }
   };

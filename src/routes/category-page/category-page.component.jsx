@@ -1,13 +1,21 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useContext } from "react";
-import { CategoriesContext } from "../../contexts/categories.context";
+import { useEffect, useState } from "react";
 import ProductCard from "../../components/product-card/product-card.component";
 import { ProductContainer } from "./category-page.styles";
+import { useSelector } from "react-redux";
+import { selectCategoriesArray } from "../../store/categories/category.selector";
 
 const CategoryPage = () => {
   const navigate = useNavigate();
   const { categoryId } = useParams();
-  const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useSelector(selectCategoriesArray);
+  const [products, setProducts] = useState(categoriesMap);
+
+  useEffect(() => {
+    if (categoriesMap) {
+      setProducts(categoriesMap.filter(({ title }) => title.toLowerCase() === categoryId));
+    }
+  }, [categoryId, categoriesMap]);
 
   return (
     <div>
@@ -16,7 +24,7 @@ const CategoryPage = () => {
         Shop &gt; <span>{categoryId}</span>
       </h3>
       <ProductContainer>
-        {categoryId && categoriesMap[categoryId].map((product) => <ProductCard key={product.id} product={product} />)}
+        {products.length > 0 && products[0]?.items.map((product) => <ProductCard key={product.id} product={product} />)}
       </ProductContainer>
     </div>
   );
