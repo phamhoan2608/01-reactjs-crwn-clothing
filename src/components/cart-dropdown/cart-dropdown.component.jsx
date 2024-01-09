@@ -23,13 +23,13 @@ const CartDropdown = () => {
   return (
     <CartDropdownContainer>
       <div className="cart-items">
-        {cartItems.length > 0 ? (
+        {cartItems?.length > 0 ? (
           cartItems.map((item) => <CartItem key={item.id} product={item} />)
         ) : (
           <span className="empty-message">Your cart is empty</span>
         )}
       </div>
-      {cartItems.length > 0 ? (
+      {cartItems?.length > 0 ? (
         <Button className="inverted" onClick={handleCheckout}>
           GO TO CHECKOUT
         </Button>
