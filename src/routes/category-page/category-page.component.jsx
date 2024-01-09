@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import ProductCard from "../../components/product-card/product-card.component";
 import { ProductContainer } from "./category-page.styles";
 import { useSelector } from "react-redux";
-import { selectCategories } from "../../store/categories/category.selector";
+import { selectCategoriesArray } from "../../store/categories/category.selector";
 
 const CategoryPage = () => {
   const navigate = useNavigate();
   const { categoryId } = useParams();
-  const categoriesMap = useSelector(selectCategories);
+  const categoriesMap = useSelector(selectCategoriesArray);
   const [products, setProducts] = useState(categoriesMap);
 
   useEffect(() => {
