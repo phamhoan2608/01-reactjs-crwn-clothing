@@ -13,7 +13,7 @@ export const CART_INIT_STATE = JSON.parse(localStorage.getItem("cart")) || {
 
 export const cartReducer = (state = CART_INIT_STATE, action) => {
   const { type, payload } = action;
-  const cartItems = state.cartItems;
+  const cartItems = state.cartItems || [];
 
   switch (type) {
     case CART_ACTION_TYPES.SET_CART_ITEMS:
