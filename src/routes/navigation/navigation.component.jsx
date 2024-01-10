@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Outlet } from "react-router-dom";
-import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
+import { ReactComponent as Saffron } from "../../assets/saffron.svg";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
@@ -15,7 +15,7 @@ const Navigation = () => {
     <>
       <NavigationContainer>
         <LogoContainer to={"/"}>
-          <CrwnLogo className="logo" />
+          <Saffron className="logo" />
         </LogoContainer>
         <NavLinksContainer>
           <NavLink to={"/shop"}>SHOP</NavLink>

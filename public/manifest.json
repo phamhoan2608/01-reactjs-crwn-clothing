@@ -1,6 +1,6 @@
 {
-  "short_name": "Crwn Clothing Shop",
-  "name": "Crwn Clothing Shop",
+  "short_name": "Hà Anh Saffon Shop",
+  "name": "Hà Anh Saffron",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo-saffron.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logo-saffron.png",
       "type": "image/png",
       "sizes": "512x512"
     }
