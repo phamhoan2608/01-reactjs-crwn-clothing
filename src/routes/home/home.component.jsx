@@ -1,32 +1,38 @@
+import { useEffect } from "react";
 import Directory from "../../components/directory/directory.component";
 import { Outlet } from "react-router-dom";
+import { addCollectionAndDocuments } from "../../utils/firebase/firebase.utils";
+import SHOP_DATA from "../../mock-data/shop-data";
 
 const Home = () => {
+  // useEffect(() => {
+  //   addCollectionAndDocuments("categories", SHOP_DATA);
+  // }, []);
+
   const categories = [
     {
       id: 1,
-      title: "hats",
-      imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+      title: "Saffron",
+      path: "saffron",
+      imageUrl: "https://i.ibb.co/TvLQ1DX/saffron-1.png",
     },
     {
       id: 2,
-      title: "jackets",
-      imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+      title: "Saffron mật ong",
+      path: "saffron-mat-ong",
+      imageUrl: "https://i.ibb.co/bPs40Fg/saffron-mat-ong-2.png",
     },
     {
       id: 3,
-      title: "sneakers",
-      imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+      title: "Bộ mỹ phẩm tinh chất Saffron",
+      path: "bo-my-pham-saffron",
+      imageUrl: "https://i.ibb.co/V2cbrJ3/set-qua.png",
     },
     {
       id: 4,
-      title: "womens",
-      imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-    },
-    {
-      id: 5,
-      title: "mens",
-      imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+      title: "Các set quà sức khỏe - sắc đẹp",
+      path: "set-qua-suc-khoe-sac-dep",
+      imageUrl: "https://i.ibb.co/R2h2krq/saffron-mat-ong-1.png",
     },
   ];
 

@@ -3,7 +3,7 @@ import { CategoryBodyContainer, CategoryContainer } from "./category-item.styles
 
 const CategoryItem = ({ category }) => {
   const navigate = useNavigate();
-  const { imageUrl, title } = category;
+  const { imageUrl, title, path } = category;
   return (
     <CategoryContainer>
       <div
@@ -14,7 +14,7 @@ const CategoryItem = ({ category }) => {
       />
       <CategoryBodyContainer
         onClick={() => {
-          navigate(`/shop/${title}`);
+          navigate(`/shop/${path}`, { state: { title: title } });
         }}
       >
         <h2>{title}</h2>

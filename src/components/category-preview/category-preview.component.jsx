@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import ProductCard from "../product-card/product-card.component";
 import { ProductContainer } from "../../routes/category-page/category-page.styles";
 
-export default function CategoryPreview({ title, products }) {
+export default function CategoryPreview({ title, path, products }) {
   const navigate = useNavigate();
 
   return (
@@ -10,7 +10,7 @@ export default function CategoryPreview({ title, products }) {
       <h2>
         <span
           onClick={() => {
-            navigate(`/shop/${title}`);
+            navigate(`/shop/${path}`, { state: { title: title } });
           }}
         >
           {title}

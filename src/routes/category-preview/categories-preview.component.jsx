@@ -7,8 +7,8 @@ const CategoriesPreview = () => {
 
   return (
     <div className="category-preview-container">
-      {categoriesMap.map(({ items, title }) => {
-        return <CategoryPreview key={title} title={title.toLowerCase()} products={items} />;
+      {categoriesMap.map(({ items, title, path }) => {
+        return <CategoryPreview key={title} title={title} path={path} products={items} />;
       })}
     </div>
   );
