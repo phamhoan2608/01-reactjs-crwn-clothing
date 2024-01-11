@@ -6,6 +6,7 @@ import { ButtonStyle } from "../../components/button/button.styles";
 import { useDispatch, useSelector } from "react-redux";
 import { createAction } from "../../utils/reducer/reducer.utils";
 import { CART_ACTION_TYPES } from "../../store/cart/cart.types";
+import { formatVND } from "../../utils/utils";
 
 const DEFALUT_CONFIRM = {
   status: false,
@@ -97,8 +98,8 @@ const Checkout = () => {
                       +
                     </ButtonStyle>
                   </td>
-                  <td>${price}</td>
-                  <td>${quantity * price}</td>
+                  <td>{formatVND(price)}</td>
+                  <td>{formatVND(quantity * price)}</td>
                   <td>
                     <ButtonStyle className="circle" onClick={() => deleteItem(cartItem)}>
                       X
@@ -113,7 +114,7 @@ const Checkout = () => {
                   <h2>Subtotal</h2>
                 </td>
                 <td>
-                  <h2>${countSum}</h2>
+                  <h2>{formatVND(countSum)}</h2>
                 </td>
                 <td></td>
               </tr>

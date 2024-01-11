@@ -15,8 +15,8 @@ const ProductCard = ({ product }) => {
         <span className="name">{name}</span>
         <span className="price">{price}</span>
       </ProductCardFooter>
-      <Button buttonType="inverted" onClick={() => dispatch(createAction(CART_ACTION_TYPES.ADD_TO_CART, product))}>
-        ADD TO CART
+      <Button buttonType="normal" onClick={() => dispatch(createAction(CART_ACTION_TYPES.ADD_TO_CART, product))}>
+        Thêm vào Giỏ hàng
       </Button>
     </ProductCardContainer>
   );

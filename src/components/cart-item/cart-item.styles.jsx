@@ -12,3 +12,8 @@ export const CartItemContainer = styled.div`
     object-fit: cover;
   }
 `;
+
+export const CartItemFooter = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

@@ -1,4 +1,5 @@
-import { CartItemContainer } from "./cart-item.styles";
+import { formatVND } from "../../utils/utils";
+import { CartItemContainer, CartItemFooter } from "./cart-item.styles";
 
 const CartItem = ({ product }) => {
   return (
@@ -6,9 +7,12 @@ const CartItem = ({ product }) => {
       <img src={`${product.imageUrl}`} alt={`${product.name}`} />
       <div className="cart-item-header">
         <span className="item-name">{product.name}</span>
-        <div className="cart-item-footer">
-          <span>{product?.quantity}</span> x <span>${product.price}</span> = ${product?.quantity * product.price}
-        </div>
+        <CartItemFooter>
+          <span>
+            <span>{product?.quantity}</span> x <span>{formatVND(product.price)}</span>
+          </span>
+          ={formatVND(product?.quantity * product.price)}
+        </CartItemFooter>
       </div>
     </CartItemContainer>
   );

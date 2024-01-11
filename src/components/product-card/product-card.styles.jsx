@@ -20,10 +20,10 @@ export const ProductCardContainer = styled.div`
 
   & button {
     display: none;
-    width: 50%;
+    width: 60%;
     position: absolute;
     bottom: 15%;
-    left: 25%;
+    left: 20%;
   }
 `;
 
