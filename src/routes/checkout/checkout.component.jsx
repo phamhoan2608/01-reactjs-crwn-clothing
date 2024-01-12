@@ -19,8 +19,6 @@ const Checkout = () => {
   const [confirm, setConfirm] = useState(DEFALUT_CONFIRM);
   const cart = useSelector((state) => state.cart);
 
-  console.log("cart log", cart.cartItems);
-
   useEffect(() => {
     dispatch(createAction(CART_ACTION_TYPES.SET_CART_ITEMS, cart.cartItems));
   }, [cart.cartItems, dispatch]);
