@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import ProductCard from "../../components/product-card/product-card.component";
 import { ProductContainer } from "./category-page.styles";
 import { useSelector } from "react-redux";
-import { selectCategoriesArray } from "../../store/categories/category.selector";
+import { selectCategoriesArray, selectCategoriesIsLoading } from "../../store/categories/category.selector";
+import Spinner from "../../components/spinner/spinner.component";
 
 const CategoryPage = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const CategoryPage = () => {
   const location = useLocation();
   const title = location.state && location.state.title ? location.state.title : "Empty";
   const categoriesMap = useSelector(selectCategoriesArray);
+  const isLoading = useSelector(selectCategoriesIsLoading);
   const [products, setProducts] = useState(categoriesMap);
 
   useEffect(() => {
@@ -25,9 +27,14 @@ const CategoryPage = () => {
       <h3 onClick={() => navigate("/shop")}>
         Shop &gt; <span>{title}</span>
       </h3>
-      <ProductContainer>
-        {products.length > 0 && products[0]?.items.map((product) => <ProductCard key={product.id} product={product} />)}
-      </ProductContainer>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <ProductContainer>
+          {products.length > 0 &&
+            products[0]?.items.map((product) => <ProductCard key={product.id} product={product} />)}
+        </ProductContainer>
+      )}
     </div>
   );
 };

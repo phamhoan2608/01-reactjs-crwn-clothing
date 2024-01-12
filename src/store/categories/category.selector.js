@@ -11,7 +11,7 @@ export const selectCategoriesArray = createSelector([selectCategories], (categor
   return categories;
 });
 
-// export const selectCategoriesArray = (state) => {
-//   console.log("selector fired");
-//   return state.categories.categories;
-// };
+export const selectCategoriesIsLoading = createSelector(
+  [selectCategoryReducer],
+  (categoriesSlice) => categoriesSlice.isLoading
+);

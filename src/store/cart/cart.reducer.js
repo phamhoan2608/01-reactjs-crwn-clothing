@@ -1,10 +1,6 @@
 import { CART_ACTION_TYPES } from "./cart.types";
 
-const updateLocalStorage = (state) => {
-  localStorage.setItem("cart", JSON.stringify(state));
-};
-
-export const CART_INIT_STATE = JSON.parse(localStorage.getItem("cart")) || {
+export const CART_INIT_STATE = {
   cartItems: [],
   isCartOpen: false,
   cartCount: 0,
@@ -17,7 +13,6 @@ export const cartReducer = (state = CART_INIT_STATE, action) => {
 
   switch (type) {
     case CART_ACTION_TYPES.SET_CART_ITEMS:
-      updateLocalStorage({ ...state, ...payload });
       return { ...state, ...payload };
     case CART_ACTION_TYPES.SET_IS_CART_OPEN:
       return { ...state, isCartOpen: payload };
@@ -35,13 +30,6 @@ export const cartReducer = (state = CART_INIT_STATE, action) => {
               }
             : cartItem;
         });
-        localStorage.setItem(
-          "cart",
-          JSON.stringify({
-            ...state,
-            cartItems: cartItemsChange,
-          })
-        );
         return {
           ...state,
           cartItems: cartItemsChange,
@@ -50,7 +38,6 @@ export const cartReducer = (state = CART_INIT_STATE, action) => {
         cartItemsChange = [...cartItems, { ...payload, quantity: 1 }];
       }
 
-      updateLocalStorage(cartItemsChange);
       return {
         ...state,
         cartItems: cartItemsChange,
