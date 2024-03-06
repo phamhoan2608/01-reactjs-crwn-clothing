@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchCategoriesAsync } from "../../store/categories/categories.action";
+import { fetchCategoriesStart } from "../../store/categories/categories.action";
 import { Route, Routes } from "react-router-dom";
 import CategoriesPreview from "../category-preview/categories-preview.component";
 import CategoryPage from "../category-page/category-page.component";
@@ -10,7 +10,7 @@ const Shop = () => {
 
   useEffect(() => {
     const getCategoryMap = async () => {
-      dispatch(fetchCategoriesAsync());
+      dispatch(fetchCategoriesStart());
     };
 
     getCategoryMap();

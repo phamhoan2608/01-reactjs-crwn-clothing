@@ -64,3 +64,69 @@ function add(x) {
 const addFive = add(5);
 console.log(addFive(3)); // Output: 8
 ```
+
+# II. Redux-Saga
+
+## 1.Function generator
+
+### 1.1. Sử dụng cơ bản
+
+```javascript
+function* check() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const c = check();
+c.next(); // return { value: 1, done: false}
+c.next(); // return { value: 2 done: false}
+c.next(); // return { value: 3, done: false}
+c.next(); // return { value: undefined, done: true}
+```
+
+### 1.2. Xử lý Tác vụ Đồng bộ và Không Đồng bộ
+
+```javascript
+function* exampleGenerator() {
+  yield 1;
+  yield 2;
+
+  // Xử lý tác vụ đồng bộ
+  const result = yield someAsyncFunction();
+
+  yield result + 1;
+}
+```
+
+### 1.3 Redux Saga
+
+`Redux Saga` là một thư viện middleware cho Redux sử dụng function generator để quản lý và xử lý các tác vụ không đồng bộ trong ứng dụng Redux. Các effect như call, put, take, và fork giúp linh hoạt điều khiển luồng.
+
+Các hàm và actions: <br>
+`takeLatest`: Là một hàm hỗ trợ từ Redux Saga giúp lắng nghe một loại action cụ thể và chạy một hàm saga khi action đó được dispatch. Nếu một action khác cùng loại được dispatch trong khi saga vẫn đang chạy, nó sẽ hủy bỏ lời gọi trước và bắt đầu một lời gọi mới.
+
+`all`: Là hàm hỗ trợ khác từ Redux Saga cho phép chạy nhiều sagas cùng một lúc.
+
+`call`: Được sử dụng để gọi các hàm không đồng bộ. Nó trả về một mô tả Effect yêu cầu middleware gọi hàm đó.
+
+`put`: Dispatch một action Redux. Trong ngữ cảnh này, nó được sử dụng để dispatch các action thành công hoặc thất bại dựa trên kết quả của hoạt động không đồng bộ.
+
+`take`: Lắng nghe một loại action cụ thể và tạm dừng generator cho đến khi action đó được dispatch.
+
+```javascript
+import { takeLatest, call, put } from "redux-saga/effects";
+
+function* fetchData() {
+  try {
+    const data = yield call(api.fetchData);
+    yield put({ type: "FETCH_SUCCESS", data });
+  } catch (error) {
+    yield put({ type: "FETCH_ERROR", error });
+  }
+}
+
+function* watchFetchData() {
+  yield takeLatest("FETCH_REQUESTED", fetchData);
+}
+```
