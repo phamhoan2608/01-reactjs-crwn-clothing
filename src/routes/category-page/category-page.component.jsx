@@ -5,6 +5,7 @@ import { ProductContainer } from "./category-page.styles";
 import { useSelector } from "react-redux";
 import { selectCategoriesArray, selectCategoriesIsLoading } from "../../store/categories/category.selector";
 import Spinner from "../../components/spinner/spinner.component";
+import { URL_MAPPING } from "../../utils/constants";
 
 const CategoryPage = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const CategoryPage = () => {
   return (
     <div>
       <h1>Category Details</h1>
-      <h3 onClick={() => navigate("/shop")}>
+      <h3 onClick={() => navigate(URL_MAPPING.SHOP)}>
         Shop &gt; <span>{title}</span>
       </h3>
       {isLoading ? (

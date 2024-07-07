@@ -4,6 +4,7 @@ import { ProductContainer } from "../../routes/category-page/category-page.style
 import { useSelector } from "react-redux";
 import { selectCategoriesIsLoading } from "../../store/categories/category.selector";
 import Spinner from "../spinner/spinner.component";
+import { URL_MAPPING } from "../../utils/constants";
 
 export default function CategoryPreview({ title, path, products }) {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function CategoryPreview({ title, path, products }) {
       <h2>
         <span
           onClick={() => {
-            navigate(`/shop/${path}`, { state: { title: title } });
+            navigate(`${URL_MAPPING.SHOP}/${path}`, { state: { title: title } });
           }}
         >
           {title}

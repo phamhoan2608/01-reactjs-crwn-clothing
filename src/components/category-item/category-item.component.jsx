@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { CategoryBodyContainer, CategoryContainer } from "./category-item.styles";
+import { URL_MAPPING } from "../../utils/constants";
 
 const CategoryItem = ({ category }) => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const CategoryItem = ({ category }) => {
       />
       <CategoryBodyContainer
         onClick={() => {
-          navigate(`/shop/${path}`, { state: { title: title } });
+          navigate(`${URL_MAPPING.SHOP}/${path}`, { state: { title: title } });
         }}
       >
         <h2>{title}</h2>

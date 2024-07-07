@@ -3,6 +3,7 @@ import CartItem from "../cart-item/cart-item.component";
 import { useNavigate } from "react-router-dom";
 import { CartDropdownContainer } from "./cart-dropdown.styles";
 import { useSelector } from "react-redux";
+import { URL_MAPPING } from "../../utils/constants";
 
 const CartDropdown = () => {
   const navigate = useNavigate();
@@ -10,13 +11,13 @@ const CartDropdown = () => {
 
   const handleCheckout = () => {
     if (cartItems) {
-      navigate("/checkout");
+      navigate(URL_MAPPING.CHECKOUT);
     }
   };
 
   const handleGoToShop = () => {
     if (cartItems) {
-      navigate("/shop");
+      navigate(URL_MAPPING.SHOP);
     }
   };
 
